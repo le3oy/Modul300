@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modul 300 LB02.html</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><p>Modul 300 LB02</p>
+<h1 id="modul-300-lb02">Modul 300 LB02</h1>
+<p><em>Leonardo Wild</em><br>
+Dies ist eine Dokumentation für die LB02 im Modul 300. In dieser Dokumentation soll ich meine Arbeitsschritte festhalten.</p>
+<h2 id="k1-einrichtung">K1 Einrichtung</h2>
+<p>In diesem Punkt soll die Struktur für die Weitere LB aufgebaut werden. Hierzu waren folgende Programme notwendig:</p>
+<ul>
+<li>VirtualBox</li>
+<li>Vagrant</li>
+<li>Visualstudio-Code</li>
+<li>Git-Client</li>
+<li>SSH-Key für Client erstellt</li>
+</ul>
+<p>Für die meisten Elemente in dieser Liste bedarf es keiner Erklärung. Den SSH Key habe ich entsprechend der Aufgabe auf Github in den Einstellungen erstellt. Den Git-Client konnte ich auch dort herunterladen.</p>
+<p>Mit der Lizenz welche wir von der TBZ zur Verfügung hatten, konnte ich VisualStudio Code installieren.</p>
+<p>VirtualBox war gratis für die Installation auf ihrer Webseite.</p>
+<p>Vagrant konnte ich als Add-On zu Git-Hub herunterladen. MIt Vagrant lassen sich VMs einfach über die Git-Bash Konsole erstellen.</p>
+<p>Danach habe ich noch einen Linux Ubuntu Client aufgesetzt.<br>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Ubuntu_19.10_Desktop.png/1200px-Ubuntu_19.10_Desktop.png" alt="enter image description here"></p>
+<h2 id="k2-lernumgebung">K2 Lernumgebung</h2>
+<p>In diesem Punkt geht es um das registrieren und vorbereiten für die nächsten Aufgaben. Hierzu sollten folgende Punkte erledigt werden.</p>
+<ul>
+<li>GitHub oder Gitlab-Account ist erstellt</li>
+<li>Git-Client wurde verwendet</li>
+<li>Dokumentation ist als Mark Down vorhanden</li>
+<li>Markdown-Editor ausgewählt und eingerichtet</li>
+<li>Mark down ist strukturiert</li>
+<li>Persönlicher Wissenstand im Bezug auf die wichtigsten Themen sind dokumentiert</li>
+<li>Wichtige Lernschritte sind dokumentiert</li>
+</ul>
+<p>Nun zu einigen von diesen Punkten braucht es wieder keine Erklärung. Die Dokumentation wurde als Mark Down angelegt.<br>
+Kommen wir zu einigen Begriffen welche geklärt werden sollten.<br>
+<strong>Linux</strong> ist ein Open Source Betriebssystem. Die Vorteile von Linux liegen darin, dass jeder den Code einsehen und benutzen kann. So können Sicherheitslücken besser geschlossen werden und es kann viel optimiert werden.<br>
+Die <strong>Virtualisierung</strong> soll die Wartung von Arbeitsplätzen oder Servern vereinfachen. Anstelle von Vielen Servern, werden nur weniger eingesetzt. Es wird also weniger Hardware gebraucht. Auf den Servern ist ein Programm für die Virtualisierung installiert. Nun lassen sich auf diesem Server mithilfe der Virtualisierung Virtuele Server, Clients und Netze installieren.<br>
+<strong>Vagrant</strong> ist eine Freie Software für das erstellen von Virtuellen Maschinen. Mit Vagrant lassen sich auch einige Arbeitsschritte automatisieren.<br>
+<strong>Git</strong> ist eine Freeware welche zur Pensionierung und Veröffentlichung/Verteilung von Programmen gebraucht wird.</p>
+<h2 id="k3-vagrant">K3 Vagrant</h2>
+<p>Zu Vagrant habe ich schon im Abschnitt K2 geschrieben.<br>
+Dies sind die Punkte welche ich erfüllen sollte:</p>
+<ul>
+<li>Bestehende vm aus Vagrant-Cloud einrichten</li>
+<li>Kennt die Vagrant-Befehle</li>
+<li>Eingerichtete Umgebung ist dokumentiert (UmgebungsVariablen, Netzwerkplan gezeichnet, Sicherheitsaspekte)</li>
+<li>Funktionsweise getestet inkl. Dokumentation der Testfälle</li>
+<li>vorgefertigte vm auf eigenem Notebook aufgesetzt</li>
+<li>Projekt mit Git und Mark Down dokumentiert</li>
+</ul>
+<p><strong>Netzwerkplan</strong></p>
+<p>Laptop VM Adapter -------------------------------- Server3 Vagrant VM<br>
+10.0.2.2-----------------------ssh port 22 ----------------10.0.2.15</p>
+<p><strong>VM aus Cloud einrichten</strong><br>
+Boxen sind bei Vagrant vorkonfigurierte VMs (Vorlagen). Diese sollen den Prozess der Softwareverteilung und der Entwicklung beschleunigen. Boxen können explizit durch den Befehl <code>vagrant box add [box-name]</code> oder <code>vagrant box add [box-url]</code> heruntergeladen und durch <code>vagrant box remove [box-name]</code> entfernt werden.<br>
+Die Konfiguration findet hier im Vagrant File Statt. In das Vagrant File sollen folgende Zeilen hineingeschrieben werden:</p>
+<p>*<em>Vagrant.configure(“2”) do |config| config.vm.define :apache do |web| web.vm.box = “bento/ubuntu-16.04” web.vm.provision :shell, path: “config_web.sh” web.vm.hostname = “srv-web” web.vm.network :forwarded_port, guest: 80, host: 4567 web.vm.network “public_network”, bridge: “en0: WLAN (AirPort)”<br>
+end</em></p>
+<p><em>config.vm.provision :shell, inline: &lt;&lt;-SHELL<br>
+sudo apt-get update sudo apt-get -y install apache2<br>
+SHELL</em></p>
+<p><em>config.vm.provider “virtualbox”<br>
+do |vb| vb.memory = “512”<br>
+end</em>*</p>
+<p>Nun muss eine Box auf dem Lokalem Computer erstellt werden<br>
+<code>$ vagrant box add [box-name]</code></p>
+<p>jetzt kann eine VM erstellt werden<br>
+<code>$ mkdir myserver</code><br>
+<code>$ cd myserver</code><br>
+<code>$ vagrant init ubuntu/xenial64</code><br>
+<code>$ vagrant up</code></p>
+<p>MIt <code>vagrant destroy -f</code> lässt sich die erstellte VM wieder löschen.</p>
+<p><strong>Vagrant Befehle</strong><br>
+<code>vagrant init</code> Initialisiert im aktuellen Verzeichnis eine Vagrant-Umgebung und erstellt, falls nicht vorhanden, ein Vagrantfile</p>
+<p><code>vagrant up</code><br>
+Erzeugt und Konfiguriert eine neue Virtuelle Maschine, basierend auf dem Vagrantfile</p>
+<p><code>vagrant ssh</code><br>
+Baut eine SSH-Verbindung zur gewünschten VM auf</p>
+<p><code>vagrant status</code><br>
+Zeigt den aktuellen Status der VM an</p>
+<p><code>vagrant port</code><br>
+Zeigt die Weitergeleiteten Ports der VM an</p>
+<p><code>vagrant halt</code><br>
+Stoppt die laufende Virtuelle Maschine</p>
+<p><code>vagrant destroy</code><br>
+Stoppt die Virtuelle Maschine und zerstört sie.</p>
+<h2 id="k4-sicherheit">K4 Sicherheit</h2>
+<p>Hier sind wieder die Verlangten Punkte aufgelistet:</p>
+<ul>
+<li>Firewall eingerichtet inkl. Rules</li>
+<li>Reverse-Proxy eingerichtet</li>
+<li>Benutzer- und Rechtevergabe ist eingerichtet (optional)</li>
+<li>Zugang mit SSH-Tunnel abgesichert</li>
+<li>Sicherheitsmassnahmen sind dokumentiert</li>
+<li>Projekt mit Git und Mark Down dokumentiert</li>
+</ul>
+<p><strong>FireWall</strong><br>
+Zuerst habe ich das Programm UFW welches wir für diese Aufgabe verwenden sollten installiert.<br>
+<code>sudo apt-get install ufw</code></p>
+<p>Mit <code>sudo ufw status</code> lässt sich der Status überprüfen. Mit <code>sudo ufw enable</code> lässt sich die FireWall einschalten und mit <code>sudo ufw disable</code> lässt sie sich deaktivieren.</p>
+<p>Danach gilt es die nötigen Ports in der FireWall zu öffnen. Ich habe Port 22 für meinen Laptop freigegeben um weiterhin mit ssh darauf zugreifen zu können.<br>
+<code>sudo ufw allow from 10.0.2.2 to any port 22</code><br>
+Danach habe ich noch Port 80 für http freigegeben.<br>
+<code>sudo ufw allow 80/tcp</code></p>
+<p>Beim installieren der FireWall ist darauf zu achten, die richtigen Ports für die richtigen IP Adressen freizugeben. So ist es mir passiert, dass ich den Port 22 für die Falsche Adresse freigegeben habe. So konnte ich nicht mehr auf meine VM Zugreifen und mein Fortschritt war dahin.</p>
+<p><strong>Reverse Proxy</strong><br>
+Zuerst habe ich alle notwendigen Module installiert.<br>
+<code>sudo apt-get install libapache2-mod-proxy-html</code><br>
+<code>sudo apt-get install libxml2-dev</code><br>
+<code>sudo apt-get install apache 2</code></p>
+<p>Anschließend habe ich folgende Module aktiviert.<br>
+<code>sudo a2enmod proxy</code><br>
+<code>sudo a2enmod proxy_html</code><br>
+<code>sudo a2enmod proxy_http</code></p>
+<p>Danach habe ich Die Datei /etc/apache2/apache2.conf ergänzt.<br>
+<code>ServerName localhost</code></p>
+<p>Danach kann der Apache WebServer neu gestartet werden.<br>
+<code>sudo service apache2 restart</code></p>
+<p>Zum Schluss habe ich dann noch einige Konfigurationen im <code>001-reverseproxy.conf</code>File vorgenommen</p>
+<pre><code># Allgemeine Proxy Einstellungen
+ProxyRequests Off
+&lt;Proxy *&gt;
+    Order deny,allow
+    Allow from all
+&lt;/Proxy&gt;
+
+# Weiterleitungen master
+ProxyPass /master http://master
+ProxyPassReverse /master http://maste
+</code></pre>
+<h2 id="schlusswort-und-fazit">Schlusswort und Fazit</h2>
+<p>Zum Schluss gibt es zu sagen, dass ich meine Ziele erfüllen konnte. Auch wenn ich nicht mit allem 100% zufrieden bin und mehr möglich gewesen wäre in dieser Zeit, bin ich mit meinen Leistungen im Unterricht zufrieden. Ich hatte in letzter Zeit etwas Schwierigkeiten im Privaten. Jedoch konnte ich dies endlich mal etwas von meinen Modulen weghalten und während den Stunden konzentriert arbeiten. Ich hätte jedoch noch mehr Zuhause machen können für eine Bessere Note. Ich habe mich aber dafür entschieden mich um andere Dinge zu kümmern. Und nun da ich dies Bewusst gemacht habe, fühle ich mich zufrieden.</p>
+</div>
+</body>
+
+</html>
