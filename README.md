@@ -60,6 +60,7 @@ Dies sind die Punkte welche ich erfüllen sollte:
 **Netzwerkplan**
 
 Laptop VM Adapter -------------------- Server3 Vagrant VM
+   
    10.0.2.2-----------ssh port 22 ------------10.0.2.15
   
 **VM aus Cloud einrichten**  
