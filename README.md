@@ -60,7 +60,8 @@ Dies sind die Punkte welche ich erfüllen sollte:
 **Netzwerkplan**
 
 Laptop VM Adapter -------------------- Server3 Vagrant VM
-  10.0.2.2-----------ssh port 22 ------------10.0.2.15
+
+10.0.2.2-----------ssh port 22 ------------10.0.2.15
   
 **VM aus Cloud einrichten**  
 Boxen sind bei Vagrant vorkonfigurierte VMs (Vorlagen). Diese sollen den Prozess der Softwareverteilung und der Entwicklung beschleunigen. Boxen können explizit durch den Befehl `vagrant box add [box-name]` oder `vagrant box add [box-url]` heruntergeladen und durch `vagrant box remove [box-name]` entfernt werden.  
