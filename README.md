@@ -26,6 +26,11 @@ Vagrant konnte ich als Add-On zu Git-Hub herunterladen. MIt Vagrant lassen sich 
 Danach habe ich noch einen Linux Ubuntu Client aufgesetzt.  
 ![enter image description here](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Ubuntu_19.10_Desktop.png/1200px-Ubuntu_19.10_Desktop.png)
 
+**Kannte ich schon:**
+Ich kannte schon die Programme Virtual Box und den Git-Client. 
+
+**War neu für mich:**
+Das Programm Vagrant und dessen Vorteile kannte ich noch nicht. Auch habe ich einen schnelleren Umgang mit Git-Bash gelernt. Auch habe ich noch nie einen SSH Key über git Bash aufgesetzt.
 ## K2 Lernumgebung
 
 In diesem Punkt geht es um das registrieren und vorbereiten für die nächsten Aufgaben. Hierzu sollten folgende Punkte erledigt werden.
@@ -45,6 +50,11 @@ Die **Virtualisierung** soll die Wartung von Arbeitsplätzen oder Servern verein
 **Vagrant** ist eine Freie Software für das erstellen von Virtuellen Maschinen. Mit Vagrant lassen sich auch einige Arbeitsschritte automatisieren.  
 **Git** ist eine Freeware welche zur Pensionierung und Veröffentlichung/Verteilung von Programmen gebraucht wird.
 
+**Kannte ich schon:** 
+Ehrlich gesagt kannte ich zu diesem Punkt sehr wenig. Ich kannte den Git-Client und den umgang damit.
+
+**War neu für mich**
+Ich habe vor diesem Project noch nie mit Git-Hub gearbeitet. Ich muss sagen, dass ich gefallen daran gefunden habe. Ich habe einen Editor benutzt namens StackEdit um den Text vorzubereiten. Danach konnte ich einfach alles Kopieren und hier bei Github einsetzen.
 ## K3 Vagrant
 
 Zu Vagrant habe ich schon im Abschnitt K2 geschrieben.  
@@ -110,6 +120,11 @@ Stoppt die laufende Virtuelle Maschine
 `vagrant destroy`  
 Stoppt die Virtuelle Maschine und zerstört sie.
 
+**Kannte ich schon:** 
+Ich kannte mich gar nicht mit Vagrant aus.
+
+**War neu für mich**
+Ich kann nun Virtuelle Mashcienen mit Vagrant erstellen. Ich kann auch anschliessend auf diese drauf Verbinden und sie konfigurieren. Während meiner Arbeitszeit konnte ich die Befehle von Vagrant zu genüge einsetzen, sodass ich sie jetzt gut kenne. 
 
 ## K4 Sicherheit
 Hier sind wieder die Verlangten Punkte aufgelistet:
@@ -164,6 +179,11 @@ Zum Schluss habe ich dann noch einige Konfigurationen im `001-reverseproxy.conf`
     ProxyPass /master http://master
     ProxyPassReverse /master http://maste
 
+**Kannte ich schon:** 
+Ich kannte mich etwas mit FireWalls auf der Linux umgebung aus. Jedoch habe ich noch nie einen Reverse Proxy konfiguriert.
+
+**War neu für mich**
+Ich kann nun eine UFW Firewall aufsetzen und konfigurieren. Ich kann einzelne Ports freigeben. Ich kann einen ReverseProxy einrichten. 
 ## Schlusswort und Fazit
 
 Zum Schluss gibt es zu sagen, dass ich meine Ziele erfüllen konnte. Auch wenn ich nicht mit allem 100% zufrieden bin und mehr möglich gewesen wäre in dieser Zeit, bin ich mit meinen Leistungen im Unterricht zufrieden. Ich hatte in letzter Zeit etwas Schwierigkeiten im Privaten. Jedoch konnte ich dies endlich mal etwas von meinen Modulen weghalten und während den Stunden konzentriert arbeiten. Ich hätte jedoch noch mehr Zuhause machen können für eine Bessere Note. Ich habe mich aber dafür entschieden mich um andere Dinge zu kümmern. Und nun da ich dies Bewusst gemacht habe, fühle ich mich zufrieden.
