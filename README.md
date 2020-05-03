@@ -245,7 +245,7 @@ Nun zu einigen von diesen Punkten braucht es wieder keine Erklärung. Die Dokume
 Kommen wir zu einigen Begriffen welche geklärt werden sollten.  
 **Linux** ist ein Open Source Betriebssystem. Die Vorteile von Linux liegen darin, dass jeder den Code einsehen und benutzen kann. So können Sicherheitslücken besser geschlossen werden und es kann viel optimiert werden.  
 Die **Virtualisierung** soll die Wartung von Arbeitsplätzen oder Servern vereinfachen. Anstelle von Vielen Servern, werden nur weniger eingesetzt. Es wird also weniger Hardware gebraucht. Auf den Servern ist ein Programm für die Virtualisierung installiert. Nun lassen sich auf diesem Server mithilfe der Virtualisierung Virtuele Server, Clients und Netze installieren.  
-**Docker** .  
+**Docker** Docker vereinfacht die Bereitstellung von Anwendungen, weil sich Container, die alle nötigen Pakete enthalten, leicht als Dateien transportieren und installieren lassen.  
 **Git** ist eine Freeware welche zur Pensionierung und Veröffentlichung/Verteilung von Programmen gebraucht wird.
 
 **Kannte ich schon:** 
@@ -253,6 +253,7 @@ Ehrlich gesagt kannte ich zu diesem Punkt sehr wenig. Ich kannte den Git-Client 
 
 **War neu für mich**
 Ich habe vor diesem Project noch nie mit Git-Hub gearbeitet. Ich muss sagen, dass ich gefallen daran gefunden habe. Ich habe einen Editor benutzt namens StackEdit um den Text vorzubereiten. Danach konnte ich einfach alles Kopieren und hier bei Github einsetzen.
+
 ## K3 Docker
 
 Dies sind die Punkte welche ich erfüllen sollte:
