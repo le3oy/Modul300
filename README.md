@@ -267,7 +267,9 @@ Sicherheitsaspekte)
 - Funktionsweise getestet inkl. Dokumentation der Testfälle
 - Projekt mit Git und Markdown dokumentiert
 
-Docker habe ich auf der Ofiziellen Webseite heruntergeladen und bei mir auf dem Client installiert. Anschliessend muss der Computer neu gestartet werden. 
+Docker habe ich auf der Ofiziellen Webseite heruntergeladen und bei mir auf dem Client installiert. Anschliessend muss der Computer neu gestartet werden. Wichtig ist es auch noch die Virtualisierung im BIOS einzustellen. Ansonsten wird Docker nicht starten. Wenn alles installiert ist, lässt sich auf Docker über CMD zugreifen. 
+
+ 
 
 
 **Netzwerkplan**
@@ -351,9 +353,41 @@ Gibt die Änderungen am Dateisystem des Containers verglichen mit dem Image aus,
    `$ docker top`
 Gibt Informationen zu den laufenden Prozessen in einem angegebenen Container aus.
 
-**Kannte ich schon:** 
+**MYSQL über Docker**
 
+Zuerst habe ich eine MYSQL VM angelegt:
+`$ docker run --rm -d --name mysql mysql`
+Um zu überprüfen ob die Container angelegt wurden, lässt sich der Comand `Docker ps` gebrauchen.
+
+Danach habe ich die internet VErbindung sichergestellt:
+MySQL Container permanent an Host Port 3306 weiterleiten:
+`$ docker run --rm -d -p 3306:3306 mysql`
+
+**Image Bereitstellung**
+Imagenamen und -Tags werden beim Bauen der Images oder durch den Befehl docker tag gesetzt:
+
+    $ docker build -t mysql .
+    $ docker build -t mysql:1.0 .
+    $ docker tag mysql username/mysql
+    
+*Docker Hub einrichten*
+1. Acount auf Docker Hub eröffnen. (Name: le3oy)
+2. Imagenamen mit Usernamen, laut Account auf Docker Hub, taggen:
+    `$ docker tag mysql username/mysql`
+3. Image hochladen:
+    `$ docker push username/mysql`
+4. Dashboard auf Docker Hub anwählen und Image beschreiben.
+5. Auf dem Client über CMD mit dem Docker Account anmelden.
+     `$ docker login`
+
+Container können mittels docker export und docker import und Images mittels docker save und docker load von/nach Verzeichnisse kopiert werden.
+
+**Kannte ich schon:** 
+ICh kannte mich in dem ganzen Thema noch wenig aus.
 
 **War neu für mich**
+Ich weis nun wie ich über Docker VMs erstellen und konfigurieren kann.
+
+## K4 Sicherheit
 
 
