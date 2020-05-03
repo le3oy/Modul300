@@ -297,10 +297,6 @@ Startet einen Container im Hintergrund und legt eine Datei an:
 Startet einen Container im Hintergrund und gibt das ROOT-Verzeichnis (/) nach STDOUT aus:
 
     $ docker run -d ubuntu ls -l
-docker ps
-
-Gibt einen Überblick über die aktuellen Container, wie z.B. Namen, IDs und Status.
-Aktive Container anzeigen:
 
     $ docker ps
 Aktive und beendete Container anzeigen (all):
