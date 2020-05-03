@@ -253,74 +253,37 @@ Ehrlich gesagt kannte ich zu diesem Punkt sehr wenig. Ich kannte den Git-Client 
 
 **War neu für mich**
 Ich habe vor diesem Project noch nie mit Git-Hub gearbeitet. Ich muss sagen, dass ich gefallen daran gefunden habe. Ich habe einen Editor benutzt namens StackEdit um den Text vorzubereiten. Danach konnte ich einfach alles Kopieren und hier bei Github einsetzen.
-## K3 Vagrant
+## K3 Docker
 
-Zu Vagrant habe ich schon im Abschnitt K2 geschrieben.  
 Dies sind die Punkte welche ich erfüllen sollte:
 
--   Bestehende vm aus Vagrant-Cloud einrichten
--   Kennt die Vagrant-Befehle
--   Eingerichtete Umgebung ist dokumentiert (UmgebungsVariablen, Netzwerkplan gezeichnet, Sicherheitsaspekte)
--   Funktionsweise getestet inkl. Dokumentation der Testfälle
--   vorgefertigte vm auf eigenem Notebook aufgesetzt
--   Projekt mit Git und Mark Down dokumentiert
+- Bestehenden Docker-Dontainer kombinieren
+- Bestehende Container als Backend, Desktop-App als Frontend
+einsetzen
+- Volumes zur persistenten Datenablage eingerichtet
+- Kennt die Docker spezifischen Befehle
+- Eingerichtete Umgebung ist dokumentiert (UmgebungsVariablen, Netzwerkplan gezeichnet, Schichtenmodell,
+Sicherheitsaspekte)
+- Funktionsweise getestet inkl. Dokumentation der Testfälle
+- Projekt mit Git und Markdown dokumentiert
+
+Docker habe ich auf der Ofiziellen Webseite heruntergeladen und bei mir auf dem Client installiert.
+
 
 **Netzwerkplan**
 
 Laptop VM Adapter -------------------- Server3 Vagrant VM
    
-   10.0.2.2-----------ssh port 22 ------------10.0.2.15
+   10.0.2.2-----------ssh port 80 ------------10.0.2.15
   
 **VM aus Cloud einrichten**  
-Boxen sind bei Vagrant vorkonfigurierte VMs (Vorlagen). Diese sollen den Prozess der Softwareverteilung und der Entwicklung beschleunigen. Boxen können explizit durch den Befehl `vagrant box add [box-name]` oder `vagrant box add [box-url]` heruntergeladen und durch `vagrant box remove [box-name]` entfernt werden.  
-Die Konfiguration findet hier im Vagrant File Statt. In das Vagrant File sollen folgende Zeilen hineingeschrieben werden:
 
-*_Vagrant.configure(“2”) do |config| config.vm.define :apache do |web| web.vm.box = “bento/ubuntu-16.04” web.vm.provision :shell, path: “config\_web.sh” web.vm.hostname = “srv-web” web.vm.network :forwarded\_port, guest: 80, host: 4567 web.vm.network “public_network”, bridge: “en0: WLAN (AirPort)”  
-end_
-
-_config.vm.provision :shell, inline: <<-SHELL  
-sudo apt-get update sudo apt-get -y install apache2  
-SHELL_
-
-_config.vm.provider “virtualbox”  
-do |vb| vb.memory = “512”  
-end_*
-
-Nun muss eine Box auf dem Lokalem Computer erstellt werden  
-`$ vagrant box add [box-name]`
-
-jetzt kann eine VM erstellt werden  
-`$ mkdir myserver`  
-`$ cd myserver`  
-`$ vagrant init ubuntu/xenial64`  
-`$ vagrant up`
-
-MIt `vagrant destroy -f` lässt sich die erstellte VM wieder löschen.
-
-**Vagrant Befehle**  
-`vagrant init` Initialisiert im aktuellen Verzeichnis eine Vagrant-Umgebung und erstellt, falls nicht vorhanden, ein Vagrantfile
-
-`vagrant up`  
-Erzeugt und Konfiguriert eine neue Virtuelle Maschine, basierend auf dem Vagrantfile
-
-`vagrant ssh`  
-Baut eine SSH-Verbindung zur gewünschten VM auf
-
-`vagrant status`  
-Zeigt den aktuellen Status der VM an
-
-`vagrant port`  
-Zeigt die Weitergeleiteten Ports der VM an
-
-`vagrant halt`  
-Stoppt die laufende Virtuelle Maschine
-
-`vagrant destroy`  
-Stoppt die Virtuelle Maschine und zerstört sie.
+**Docker Befehle**  
+.
 
 **Kannte ich schon:** 
-Ich kannte mich gar nicht mit Vagrant aus.
+
 
 **War neu für mich**
-Ich kann nun Virtuelle Mashcienen mit Vagrant erstellen. Ich kann auch anschliessend auf diese drauf Verbinden und sie konfigurieren. Während meiner Arbeitszeit konnte ich die Befehle von Vagrant zu genüge einsetzen, sodass ich sie jetzt gut kenne. 
+
 
