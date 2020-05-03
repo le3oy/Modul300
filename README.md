@@ -245,7 +245,7 @@ Nun zu einigen von diesen Punkten braucht es wieder keine Erklärung. Die Dokume
 Kommen wir zu einigen Begriffen welche geklärt werden sollten.  
 **Linux** ist ein Open Source Betriebssystem. Die Vorteile von Linux liegen darin, dass jeder den Code einsehen und benutzen kann. So können Sicherheitslücken besser geschlossen werden und es kann viel optimiert werden.  
 Die **Virtualisierung** soll die Wartung von Arbeitsplätzen oder Servern vereinfachen. Anstelle von Vielen Servern, werden nur weniger eingesetzt. Es wird also weniger Hardware gebraucht. Auf den Servern ist ein Programm für die Virtualisierung installiert. Nun lassen sich auf diesem Server mithilfe der Virtualisierung Virtuele Server, Clients und Netze installieren.  
-**Vagrant** ist eine Freie Software für das erstellen von Virtuellen Maschinen. Mit Vagrant lassen sich auch einige Arbeitsschritte automatisieren.  
+**Docker** .  
 **Git** ist eine Freeware welche zur Pensionierung und Veröffentlichung/Verteilung von Programmen gebraucht wird.
 
 **Kannte ich schon:** 
@@ -267,7 +267,7 @@ Sicherheitsaspekte)
 - Funktionsweise getestet inkl. Dokumentation der Testfälle
 - Projekt mit Git und Markdown dokumentiert
 
-Docker habe ich auf der Ofiziellen Webseite heruntergeladen und bei mir auf dem Client installiert.
+Docker habe ich auf der Ofiziellen Webseite heruntergeladen und bei mir auf dem Client installiert. Anschliessend muss der Computer neu gestartet werden. 
 
 
 **Netzwerkplan**
@@ -309,22 +309,12 @@ Aktive und beendete Container anzeigen (all):
 Nur IDs ausgeben (all, quit):
 
     $ docker ps -a -q
-docker images
 
-Gibt eine Liste lokaler Images aus, wobei Informationen zu Repository-Namen, Tag-Namen und Grösse enthalten sind.
 Lokale Images ausgeben:
-
     $ docker images
-Alternativ auch mit ... image ls:
 
     $ docker image ls
 docker rm und docker rmi
-
-docker rm
-Entfernt einen oder mehrere Container. Gibt die Namen oder IDs erfolgreich gelöschter Container zurück.
-docker rmi
-Löscht das oder die angegebenen Images. Diese werden durch ihre ID oder Repository- und Tag-Namen spezifiziert.
-Docker Container löschen:
 
     $ docker rm [name]
 Alle beendeten Container löschen:
