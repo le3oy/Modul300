@@ -279,7 +279,89 @@ Laptop VM Adapter -------------------- Server3 Vagrant VM
 **VM aus Cloud einrichten**  
 
 **Docker Befehle**  
-.
+Standard-Test:
+
+    $ docker run hello-world
+`Startet einen Container mit einer interaktiven Shell (interactive, tty):`
+
+    $ docker run -it ubuntu /bin/bash
+`Startet einen Container, der im Hintergrund (detach) läuft:`
+
+    $ docker run -d ubuntu sleep 20
+Startet einen Container im Hintergrund und löscht (remove) diesen nach Beendigung des Jobs:
+
+    $ docker run -d --rm ubuntu sleep 20
+Startet einen Container im Hintergrund und legt eine Datei an:
+
+    $ docker run -d ubuntu touch /tmp/lock
+Startet einen Container im Hintergrund und gibt das ROOT-Verzeichnis (/) nach STDOUT aus:
+
+    $ docker run -d ubuntu ls -l
+docker ps
+
+Gibt einen Überblick über die aktuellen Container, wie z.B. Namen, IDs und Status.
+Aktive Container anzeigen:
+
+    $ docker ps
+Aktive und beendete Container anzeigen (all):
+
+    $ docker ps -a
+Nur IDs ausgeben (all, quit):
+
+    $ docker ps -a -q
+docker images
+
+Gibt eine Liste lokaler Images aus, wobei Informationen zu Repository-Namen, Tag-Namen und Grösse enthalten sind.
+Lokale Images ausgeben:
+
+    $ docker images
+Alternativ auch mit ... image ls:
+
+    $ docker image ls
+docker rm und docker rmi
+
+docker rm
+Entfernt einen oder mehrere Container. Gibt die Namen oder IDs erfolgreich gelöschter Container zurück.
+docker rmi
+Löscht das oder die angegebenen Images. Diese werden durch ihre ID oder Repository- und Tag-Namen spezifiziert.
+Docker Container löschen:
+
+    $ docker rm [name]
+Alle beendeten Container löschen:
+
+    $ docker rm `docker ps -a -q`
+Alle Container, auch aktive, löschen:
+
+    $ docker rm -f `docker ps -a -q`
+Docker Image löschen:
+
+    $ docker rmi ubuntu
+Zwischenimages löschen (haben keinen Namen):
+
+    $ docker rmi `docker images -q -f dangling=true`
+docker start
+
+Startet einen (oder mehrere) gestoppte Container.
+Kann genutzt werden, um einen Container neu zu starten, der beendet wurde, oder um einen Container zu starten, der mit docker create erzeugt, aber nie gestartet wurde.
+Docker Container neu starten, die Daten bleiben erhalten:
+
+    $ docker start [id]
+Container stoppen, killen
+
+docker stop
+Stoppt einen oder mehrere Container (ohne sie zu entfernen). Nach dem Aufruf von docker stop für einen Container wird er in den Status »exited« überführt.
+docker kill
+Schickt ein Signal an den Hauptprozess (PID 1) in einem Container. Standardmässig wird SIGKILL gesendet, womit der Container sofort stoppt.
+Informationen zu Containern
+
+docker logs
+Gibt die "Logs" für einen Container aus. Dabei handelt es sich einfach um alles, was innerhalb des Containers nach STDERR oder STDOUT geschrieben wurde.
+docker inspect
+Gibt umfangreiche Informationen zu Containern oder Images aus. Dazu gehören die meisten Konfigurationsoptionen und Netzwerkeinstellungen sowie Volumes-Mappings.
+docker diff
+Gibt die Änderungen am Dateisystem des Containers verglichen mit dem Image aus, aus dem er gestartet wurde.
+docker top
+Gibt Informationen zu den laufenden Prozessen in einem angegebenen Container aus.
 
 **Kannte ich schon:** 
 
