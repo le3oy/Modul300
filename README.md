@@ -282,10 +282,10 @@ Laptop VM Adapter -------------------- Server3 Vagrant VM
 Standard-Test:
 
     $ docker run hello-world
-`Startet einen Container mit einer interaktiven Shell (interactive, tty):`
+Startet einen Container mit einer interaktiven Shell (interactive, tty):
 
     $ docker run -it ubuntu /bin/bash
-`Startet einen Container, der im Hintergrund (detach) läuft:`
+Startet einen Container, der im Hintergrund (detach) läuft:
 
     $ docker run -d ubuntu sleep 20
 Startet einen Container im Hintergrund und löscht (remove) diesen nach Beendigung des Jobs:
