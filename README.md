@@ -267,18 +267,7 @@ Sicherheitsaspekte)
 - Funktionsweise getestet inkl. Dokumentation der Testfälle
 - Projekt mit Git und Markdown dokumentiert
 
-Docker habe ich auf der Ofiziellen Webseite heruntergeladen und bei mir auf dem Client installiert. Anschliessend muss der Computer neu gestartet werden. Wichtig ist es auch noch die Virtualisierung im BIOS einzustellen. Ansonsten wird Docker nicht starten. Wenn alles installiert ist, lässt sich auf Docker über CMD zugreifen. 
-
- 
-
-
-**Netzwerkplan**
-
-Laptop VM Adapter -------------------- Server3 Vagrant VM
-   
-   10.0.2.2-----------ssh port 80 ------------10.0.2.15
-  
-**VM aus Cloud einrichten**  
+Docker habe ich auf der Ofiziellen Webseite heruntergeladen und bei mir auf dem Client installiert. Anschliessend muss der Computer neu gestartet werden. Wichtig ist es auch noch die Virtualisierung im BIOS einzustellen. Ansonsten wird Docker nicht starten. Wenn alles installiert ist, lässt sich auf Docker über CMD zugreifen.   
 
 **Docker Befehle**  
 Standard-Test:
@@ -383,11 +372,85 @@ Imagenamen und -Tags werden beim Bauen der Images oder durch den Befehl docker t
 Container können mittels docker export und docker import und Images mittels docker save und docker load von/nach Verzeichnisse kopiert werden.
 
 **Kannte ich schon:** 
-ICh kannte mich in dem ganzen Thema noch wenig aus.
+Ich kannte mich in dem ganzen Thema noch wenig aus.
 
 **War neu für mich**
 Ich weis nun wie ich über Docker VMs erstellen und konfigurieren kann.
 
 ## K4 Sicherheit
+Dies sind die Punkte welche ich erfüllen sollte:
 
-## Reflexion
+Sicherheitsaspekte sind implementiert
+- Service-Überwachung ist eingerichtet
+- Aktive Benachrichtigung ist eingerichtet
+- mind. 3 Aspekte der Container-Absicherung sind berücksichtigt
+- Sicherheitsmassnahmen sind dokumentiert (Bezug zur eingerichteten Umgebung ist vorhanden)
+- Projekt mit Git und Markdown dokumentier
+
+**Login**
+Mit folgenden Daten lassen sich die Login Daten kontrollieren.
+
+Standard-Logging (JSON-File)
+Einfache Ausgaben abholen:
+
+    $ docker run --name logtest ubuntu bash -c 'echo "stdout"; echo "stderr" >>2'
+    $ docker logs logtest
+    $ docker rm logtest
+Laufende Ausgaben anzeigen:
+
+    $ docker run -d --name streamtest ubuntu bash -c 'while true; do echo "tick"; sleep 1; done;'
+    $ docker logs streamtest 
+    $ docker logs streamtest | wc -l
+    $ docker rm streamtest
+
+Protokollierung in das System-Log (syslog) des Hosts:
+
+    $ docker run -d --log-driver=syslog ubuntu bash -c 'i=0; while true; do i=$((i+1)); echo "docker $i"; sleep 1; done;'
+    $ tail -f /var/log/syslog
+    
+**Absichern**
+Zu den wichtigsten Dingen, um einen Container abzusichern, gehören:
+
+-Die Container laufen in einer VM oder auf einem dedizierten Host, um zu vermeiden, dass andere Benutzer oder Services angegriffen -werden können.
+-Der Load Balancer / Reverse-Proxy ist der einzige Container, der einen Port nach aussen freigibt, wodurch viel Angriffsfläche verschwindet. Monitoring oder Logging-Services sollten über private Schnittstellen oder VPN nutzbar sein.
+-Alle Images definieren einen Benutzer und laufen nicht als root.
+-Alle Images werden über den eigenen Hash heruntergeladen oder auf anderem Wege sicher erhalten und verifiziert.
+-Die Anwendung wird überwacht und es wird Alarm ausgelöst, wenn eine ungewöhnliche Netzwerklast oder auffällige Zugriffsmuster erkannt werden.
+-Alle Container laufen mit aktueller Software und im Produktivmodus – Debug-Informationen sind abgeschaltet.
+-AppArmor oder SELinux sind auf dem Host aktiviert
+-Services wie z.B. Apache, Mysql ist mir irgendeiner Form der Zugriffskontrolle oder einem Passwortschutz ausgestattet.
+
+Weitere Massnahmen:
+-Unnötige setuid-Binaries werden aus den identidock-Images entfernt. Damit verringert sich das Risiko, dass Angreifer, die Zugriff auf einen Container erhalten haben, ihre Berechtigungen erweitern können.
+-Dateisysteme werden so weit wie möglich schreibgeschützt eingesetzt.
+-Nicht benötigte Kernel-Berechtigungen werden so weit wie möglich entfernt.    
+
+**Weitere Sicherheitstipps**
+
+User setzen
+   `$ RUN groupadd -r user_grp && useradd -r -g user_grp user
+    $ USER user`
+
+setuid/setgid-Binaries entfernen
+   `$ FROM ubuntu:14.04`
+    `$ RUN find / -perm +6000 -type f -exec chmod a-s {} \; || true`
+
+
+Speicher begrenzen
+     `$ docker run -m 128m --memory-swap 128m amouat/stress stress --vm 1 --vm-bytes 127m -t 5s`
+     
+CPU-Einsatz beschränken
+   `$ docker run -d --name load1 -c 2048 amouat/stress
+    $ docker run -d --name load2 amouat/stress
+    $ docker run -d --name load3 -c 512 amouat/stress
+    $ docker run -d --name load4 -c 512 amouat/stress
+    $ docker stats $(docker inspect -f {{.Name}} $(docker ps -q))`
+    
+Zugriffe auf die Dateisysteme begrenzen
+   `$ docker run --read-only ubuntu touch x`
+   
+Capabilities einschränken
+   `$ docker run --cap-drop all --cap-add CHOWN ubuntu chown 100 /tmp`
+    
+##Reflexion
+Dieses Projekt hat mir viel mühe bereitet und hat in einer turbulenten Zeit meines lebens statgefunden. Ich habe aber trotzdem probiert einfachere Aufgaben umzusetzen und meinen Teil aus der Aufgabe zu lernen und hier festzuhalten. Ich habe probiert das Projekt so zu Dokumentieren, dass ich es nochmals nachbauen kann. Ich denke dies ist mir gut gelungen. Ich hätte aber mehr Zeit und begeisterung ins Projekt stecken können. Es wäre sicher noch Einiges möglich gewesen. 
