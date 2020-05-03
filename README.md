@@ -329,28 +329,30 @@ Docker Image löschen:
 Zwischenimages löschen (haben keinen Namen):
 
     $ docker rmi `docker images -q -f dangling=true`
-docker start
 
+    $ docker start`
 Startet einen (oder mehrere) gestoppte Container.
-Kann genutzt werden, um einen Container neu zu starten, der beendet wurde, oder um einen Container zu starten, der mit docker create erzeugt, aber nie gestartet wurde.
+
 Docker Container neu starten, die Daten bleiben erhalten:
 
     $ docker start [id]
-Container stoppen, killen
 
-docker stop
+Container stoppen, killen
+    `$ docker stop`
+  
 Stoppt einen oder mehrere Container (ohne sie zu entfernen). Nach dem Aufruf von docker stop für einen Container wird er in den Status »exited« überführt.
-docker kill
+     `$ docker kill`
 Schickt ein Signal an den Hauptprozess (PID 1) in einem Container. Standardmässig wird SIGKILL gesendet, womit der Container sofort stoppt.
+
 Informationen zu Containern
 
-docker logs
+   `$ docker logs`
 Gibt die "Logs" für einen Container aus. Dabei handelt es sich einfach um alles, was innerhalb des Containers nach STDERR oder STDOUT geschrieben wurde.
-docker inspect
+   `$ docker inspect`
 Gibt umfangreiche Informationen zu Containern oder Images aus. Dazu gehören die meisten Konfigurationsoptionen und Netzwerkeinstellungen sowie Volumes-Mappings.
-docker diff
+   `$ docker diff`
 Gibt die Änderungen am Dateisystem des Containers verglichen mit dem Image aus, aus dem er gestartet wurde.
-docker top
+   `$ docker top`
 Gibt Informationen zu den laufenden Prozessen in einem angegebenen Container aus.
 
 **Kannte ich schon:** 
