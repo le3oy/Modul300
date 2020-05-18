@@ -190,13 +190,7 @@ Ich kannte mich etwas mit FireWalls auf der Linux umgebung aus. Jedoch habe ich 
 
 **War neu für mich**
 Ich kann nun eine UFW Firewall aufsetzen und konfigurieren. Ich kann einzelne Ports freigeben. Ich kann einen ReverseProxy einrichten. 
-## Schlusswort und Fazit
 
-Zum Schluss gibt es zu sagen, dass ich meine Ziele erfüllen konnte. Auch wenn ich nicht mit allem 100% zufrieden bin und mehr möglich gewesen wäre in dieser Zeit, bin ich mit meinen Leistungen im Unterricht zufrieden. Ich hatte in letzter Zeit etwas Schwierigkeiten im Privaten. Jedoch konnte ich dies endlich mal etwas von meinen Modulen weghalten und während den Stunden konzentriert arbeiten. Ich hätte jedoch noch mehr Zuhause machen können für eine Bessere Note. Ich habe mich aber dafür entschieden mich um andere Dinge zu kümmern. Und nun da ich dies Bewusst gemacht habe, fühle ich mich zufrieden.
-
-
-
-Modul 300 LB03
 
 # Modul 300 LB03
 
@@ -453,6 +447,3 @@ Zugriffe auf die Dateisysteme begrenzen
 Capabilities einschränken
    `$ docker run --cap-drop all --cap-add CHOWN ubuntu chown 100 /tmp`
     
-## Reflexion
-
-Dieses Projekt hat mir viel mühe bereitet und hat in einer turbulenten Zeit meines lebens statgefunden. Ich habe aber trotzdem probiert einfachere Aufgaben umzusetzen und meinen Teil aus der Aufgabe zu lernen und hier festzuhalten. Ich habe probiert das Projekt so zu Dokumentieren, dass ich es nochmals nachbauen kann. Ich denke dies ist mir gut gelungen. Ich hätte aber mehr Zeit und begeisterung ins Projekt stecken können. Es wäre sicher noch Einiges möglich gewesen. 
